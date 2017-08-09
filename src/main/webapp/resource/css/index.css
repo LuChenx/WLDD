@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+body{
+	background-image:url(../img/index.jpg);
+	background-size:cover;   
+	text-align:center; 
+}
+.logindiv{
+	width:25%;
+	margin:0px auto;
+	margin-top:80px;
+}
+.registerLink{
+	cursor:pointer;
+}

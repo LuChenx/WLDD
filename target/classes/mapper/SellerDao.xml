@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为Dao接口方法提供sql语句配置 -->
+<mapper namespace="com.wldd.dao.SellerDao">
+	<insert id="save" parameterType="com.wldd.entity.Seller">
+		insert into seller(shopName,shopAddress,cardYY,cardJY,loginName,loginPassword,sellerName,sellerPhone,accountCreateTime) 
+			values(#{shopName},#{shopAddress},#{cardYY},#{cardJY},#{loginName},#{loginPassword},#{sellerName},#{sellerPhone},#{accountCreateTime});
+	</insert>
+	
+	<select id="findByLoginName" parameterType="String" resultType="com.wldd.entity.Seller">
+		select * from seller where loginName = #{loginName};
+	</select>
+	
+	<select id="findAll" resultType="com.wldd.entity.Seller">
+		select * from seller;
+	</select>
+	
+	<select id="findNoStatus" resultType="com.wldd.entity.Seller">
+		select * from seller where status = "待审核" order by accountCreateTime asc;
+	</select>
+	
+	<select id="findByLoginInfo" resultType="com.wldd.entity.Seller">
+		select * from seller where loginName = #{0} and loginPassword = #{1};
+	</select>
+	
+	<update id="updatePassword">
+		update seller	set loginPassword = #{0} where sellerId = #{1};
+	</update>
+	
+	<update id="setSellerPass">
+		update seller	set status = "正常" where sellerId = #{0};
+	</update>
+	
+	<update id="setSellerNotPass">
+		update seller	set status = "未批准" where sellerId = #{0};
+	</update>
+</mapper>

@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+.address{
+	font-size:20px;
+	font-family: 华文隶书;
+}
+select{
+	border-radius:5px 5px 5px 5px;
+}

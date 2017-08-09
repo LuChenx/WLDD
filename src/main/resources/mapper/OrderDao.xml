@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wldd.dao.OrderDao">
+	<insert id="createOrder">
+		insert into t_order(orderId,owerType,owerId,orderEmType,
+			address,destination,owerName,owerPhone,reviceName,revicePhone,itemType,payType)
+			values(#{orderId},#{owerType},#{owerId},#{orderEmType},#{address},#{destination},#{owerName},#{owerPhone},#{reviceName},#{revicePhone},#{itemType},#{payType});
+	</insert>
+	<select id="findAllComplete" resultType="com.wldd.entity.Order">
+		select * from t_order where status = "已完成" order by orderTime desc;
+	</select>
+	<select id="findAllUnComplete" resultType="com.wldd.entity.Order">
+		select * from t_order where status != "已完成" order by orderTime desc;
+	</select>
+	<select id="findAllCompleteByUser" resultType="com.wldd.entity.Order">
+		select * from t_order where status = "已完成" and owerId = #{uid} order by orderTime desc;
+	</select>
+	<select id="findAllUnCompleteByUser" resultType="com.wldd.entity.Order">
+		select * from t_order where status != "已完成" and owerId = #{uid} order by orderTime desc;
+	</select>
+	<select id="findById" resultType="com.wldd.entity.Order">
+		select * from t_order where  orderId = #{orderId};
+	</select>
+</mapper>

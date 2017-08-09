@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为Dao接口方法提供sql语句配置 -->
+<mapper namespace="com.wldd.dao.PointDao">
+	<insert id="save" parameterType="com.wldd.entity.MyPoint">
+		insert into point(loginName,loginPassword,phone,address,userName) 
+			values(#{loginName},#{loginPassword},#{phone},#{address},#{userName});
+	</insert>
+	
+	<delete id="delete">
+		delete from point where pointId = #{pointId};
+	</delete>
+	
+	<select id="findAll" resultType="com.wldd.entity.MyPoint">
+		select * from point ;
+	</select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为Dao接口方法提供sql语句配置 -->
+<mapper namespace="com.wldd.dao.UserDao">
+	<insert id="save" parameterType="com.wldd.entity.User">
+		insert into user(loginName,loginPassword,userName,userPhone) 
+			values(#{loginName},#{loginPassword},#{userName},#{userPhone});
+	</insert>
+	<select id="getByLoginName" resultType="com.wldd.entity.User">
+		select * from user where loginName = #{loginName};
+	</select>
+	<update id="updatePassword">
+		update user set loginPassword = #{0} where userId = #{1};
+	</update>
+</mapper>

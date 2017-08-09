@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wldd.dao.MyPriceDao">
+	<select id="findAll" resultType="com.wldd.entity.MyPrice">
+		select * from t_price;
+	</select>
+	
+	<insert id="save">
+		insert into t_price(eid,ename,eprice1,epricex1,eprice2,epricex2,eprice3,epricex3,eprice4,epricex4,eprice5,epricex5,eprice6,epricex6) 
+		values(#{eid},#{ename},#{eprice1},#{epricex1},#{eprice2},#{epricex2},#{eprice3},#{epricex3},#{eprice4},#{epricex4},#{eprice5},#{epricex5},#{eprice6},#{epricex6});
+	</insert>
+	
+	<update id="update">
+		update t_price set eprice1 = #{eprice1}, epricex1 = #{epricex1} ,eprice2 = #{eprice2},epricex2 = #{epricex2},
+		eprice3 = #{eprice3}, epricex3 = #{epricex3} ,eprice4 = #{eprice4},epricex4 = #{epricex4}, eprice5 = #{eprice5},
+		epricex5 = #{epricex5} ,eprice6 = #{eprice6},epricex6 = #{epricex6} where eid = #{eid};
+	</update>
+</mapper>
